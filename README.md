@@ -2,9 +2,9 @@
 
 make git repo -- done
 write psuedo code -- done
-set up html 
-create 1 space ship with text
-set score in JS
+set up html -- done
+create 1 space ship with text -- done
+set score in JS --- done
 reduce score by allocated amount in console
 print score to page 
 if score hits 0 stay at 0
@@ -16,6 +16,7 @@ show alert when game ends
 create a reset button to restart game
 
 host site 
+MAX 150 LINES OF CODE!! ALL IN HTML
 
 //brief//
 
