@@ -25,6 +25,7 @@
     <div id="attackship6"></div>
     <div id="attackship7"></div>
     <div id="attackship8"></div>
+    <button onClick = location.reload()>Retry</button>
 
     <script>
         class Ship {
@@ -41,12 +42,10 @@
                 this.points = this.points - this.hitPoints;
                 this.points = (this.points <= 0) ? "dead"  : 
                 this.points;
-
             }
 
             dies() {
                 this.isAlive = false;
-
             }
 
         }
@@ -88,7 +87,6 @@
         document.addEventListener('click' , () => reduce());
 
         ships.forEach(ship = (currentPoints));
-        
     </script>
 </body>
 
