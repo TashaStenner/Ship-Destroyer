@@ -5,21 +5,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Ship Destroyer</title>
+    
 </head>
 <body>
     <div id = "mothership">Mothership </div>
 
 
     <script>
-        let mothership = 100; 
-        let defenseship = 80;
-        let attackship = 45;
-        let motherhit = 9;
-        let defensehit = 10;
-        let attackhit = 12;
+        class ship {
+        constructor(type, points, hitPoints){
+        this.type = type;
+        this.points = points;
+        this.hitPoints = hitPoints;
+        this.isAlive = true;
+    }
+        takesDamage(hit){
+            return this.points = this.points - hit;
+        }
 
-        const reduceScore = (shipType , hitpoints) =>  shipType - hitpoints;
-        document.getElementById("mothership").innerHTML += mothership;
+        dies(){
+            return this.isAlive = false;
+        }
+        
+    }
+
+    class Mothership extends ship{
+    constructor(type, Points, hitPoints){
+        super(type, Points, hitPoints);
+        
+    } 
+    
+    allDie(){
+        alert("game ends");
+    }
+}
+ 
+    const mothership = new Mothership ("mothership", 100 , 9);
+    const defenseship = new ship ("defenseship" , 80 , 10);
+    const attackship = new ship ("attackship" , 45 , 12);
+
+    const clearContent = document.getElementById("mothership").innerHTML = ('');
+    document.getElementById("mothership").innerHTML = clearContent + "Mothership " + mothership.points;
+
+    mothership.takesDamage(mothership.hitPoints);
+
+    document.getElementById("mothership").innerHTML = clearContent + "Mothership " + mothership.points;
+    // document.getElementById("mothership").innerHTML  + "Mothership " + mothership.points;
+        // document.getElementById("mothership").innerHTML = ("Mothership " + mothership);
+
+        
+        
+
 
     
     </script>
