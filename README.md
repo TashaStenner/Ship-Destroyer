@@ -9,13 +9,15 @@ reduce score by allocated amount in console -- done
 print score to page -- done
 make it replace score number -- done
 refactor -- done
-reduce score on click
-if score hits 0 stay at 0
-add more ships & set up same logic with the correct numbers
-test each type of ship seperately
-randomise targets
-if mothership dies first end game
-show alert when game ends
+reduce score on click -- done
+if score hits 0 stay at 0 -- done
+add more ships & set up same logic with the correct numbers -- done
+test each type of ship seperately -- done
+randomise targets -- done/ish
+randomise on each click -- done
+if mothership dies first end game -- done
+show alert when game ends -- done
+remove from array if dead - done
 create a reset button to restart game
 
 host site 

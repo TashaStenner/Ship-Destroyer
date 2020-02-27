@@ -1,93 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="console-log-tests.js"></script>
     <title>Ship Destroyer</title>
-    
+
 </head>
+
 <body>
-    <div id = "mothership" ></div>
-    <div id = "defenseship1" ></div>
-    <div id = "defenseship2" ></div>
-    <div id = "defenseship3" ></div>
-    <div id = "defenseship4" ></div>
-    <div id = "defenseship5" ></div>
-    <div id = "attackship1" ></div>
-    <div id = "attackship2" ></div>
-    <div id = "attackship3" ></div>
-    <div id = "attackship4" ></div>
-    <div id = "attackship5" ></div>
-    <div id = "attackship6" ></div>
-    <div id = "attackship7" ></div>
-    <div id = "attackship8" ></div>
+    <div id="mothership"></div>
+    <div id="defenseship1"></div>
+    <div id="defenseship2"></div>
+    <div id="defenseship3"></div>
+    <div id="defenseship4"></div>
+    <div id="defenseship5"></div>
+    <div id="attackship1"></div>
+    <div id="attackship2"></div>
+    <div id="attackship3"></div>
+    <div id="attackship4"></div>
+    <div id="attackship5"></div>
+    <div id="attackship6"></div>
+    <div id="attackship7"></div>
+    <div id="attackship8"></div>
 
     <script>
-        class ship {
-        constructor(type, points, hitPoints, id){
-        this.type = type;
-        this.points = points;
-        this.hitPoints = hitPoints;
-        this.id = id;
-        this.isAlive = true;
-    }
-        takesDamage(){
-            this.points = this.points - this.hitPoints;
-            this.points >= 0 ? 0 : this.points;
-            return this.points;
+        class Ship {
+            constructor(type, points, hitPoints, id) {
+                this.type = type;
+                this.points = points;
+                this.hitPoints = hitPoints;
+                this.id = id;
+                this.isAlive = true;
+            }
+            takesDamage() {
+                let dead = (this.points === "dead" && this.type === "Mothership") ? alert("game ends") : 
+                (this.points === "dead") ? this.dies() : 
+                this.points = this.points - this.hitPoints;
+                this.points = (this.points <= 0) ? "dead"  : 
+                this.points;
+
+            }
+
+            dies() {
+                this.isAlive = false;
+
+            }
+
         }
 
-        dies(){
-            return this.isAlive = false;
+        const mothership = new Ship("Mothership", 100, 9, "mothership");
+
+        const defenseship1 = new Ship("Defenseship", 80, 10, "defenseship1");
+        const defenseship2 = new Ship("Defenseship", 80, 10, "defenseship2");
+        const defenseship3 = new Ship("Defenseship", 80, 10, "defenseship3");
+        const defenseship4 = new Ship("Defenseship", 80, 10, "defenseship4");
+        const defenseship5 = new Ship("Defenseship", 80, 10, "defenseship5");
+
+        const attackship1 = new Ship("Attackship", 45, 12, "attackship1");
+        const attackship2 = new Ship("Attackship", 45, 12, "attackship2");
+        const attackship3 = new Ship("Attackship", 45, 12, "attackship3");
+        const attackship4 = new Ship("Attackship", 45, 12, "attackship4");
+        const attackship5 = new Ship("Attackship", 45, 12, "attackship5");
+        const attackship6 = new Ship("Attackship", 45, 12, "attackship6");
+        const attackship7 = new Ship("Attackship", 45, 12, "attackship7");
+        const attackship8 = new Ship("Attackship", 45, 12, "attackship8");
+
+        let ships = [mothership, defenseship1, defenseship2, defenseship3, defenseship4, defenseship5, attackship1, attackship2, attackship3, attackship4, attackship5, attackship6, attackship7, attackship8 ];
+        
+        const currentPoints = (ship) => {
+
+            document.getElementById(ship.id).innerHTML = ('');
+            document.getElementById(ship.id).innerHTML = ship.type + (" ") + ship.points;
         }
+
+        const reduce = () => {
+            const shipPosition = Math.floor(Math.random() * ships.length)
+            const ship = ships[shipPosition];
+            ship.takesDamage();
+            document.getElementById(ship.id).innerHTML = ('');
+            document.getElementById(ship.id).innerHTML = ship.type + (" ") + ship.points;
+            ship.isAlive === false ? ships.splice(shipPosition, 1) : null;
+        }
+    
+        document.addEventListener('click' , () => reduce());
+
+        ships.forEach(ship = (currentPoints));
         
-    }
-
-    class Mothership extends ship{
-    constructor(type, points, hitPoints, id){
-        super(type, points, hitPoints, id);
-        
-    } 
-    
-    allDie(){
-        alert("game ends");
-    }
-}
-
-    const mothership = new Mothership ("Mothership", 100 , 9, "mothership");
-
-    const defenseship1 = new ship ("Defenseship" , 80 , 10 , "defenseship1");
-    const defenseship2 = new ship ("Defenseship" , 80 , 10 , "defenseship2");
-    const defenseship3 = new ship ("Defenseship" , 80 , 10 , "defenseship3");
-    const defenseship4 = new ship ("Defenseship" , 80 , 10 , "defenseship4");
-    const defenseship5 = new ship ("Defenseship" , 80 , 10 , "defenseship5");
-
-    const attackship1 = new ship ("Attackship" , 45 , 12, "attackship1");
-    const attackship2 = new ship ("Attackship" , 45 , 12, "attackship2");
-    const attackship3 = new ship ("Attackship" , 45 , 12, "attackship3");
-    const attackship4 = new ship ("Attackship" , 45 , 12, "attackship4");
-    const attackship5 = new ship ("Attackship" , 45 , 12, "attackship5");
-    const attackship6 = new ship ("Attackship" , 45 , 12, "attackship6");
-    const attackship7 = new ship ("Attackship" , 45 , 12, "attackship7");
-    const attackship8 = new ship ("Attackship" , 45 , 12, "attackship8");
-
-    const currentPoints = (shipType) => {
-        
-        document.getElementById(shipType.id).innerHTML = ('');
-        document.getElementById(shipType.id).innerHTML = shipType.type + (" ")+ shipType.points;
-    }
-
-    const reduce = (shipType) => {
-    shipType.takesDamage(shipType.hitPoints);   
-    }
-
-    currentPoints(mothership);
-    
-    // window.addEventListener('"click" ', reduce("mothership", "mothership " , mothership));
-    
-    
     </script>
 </body>
+
 </html>
