@@ -4,23 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="console-log-tests.js"></script>
     <title>Ship Destroyer</title>
     
 </head>
 <body>
-    <div id = "mothership">Mothership </div>
-
+    <div id = "mothership" ></div>
+    <div id = "defenseship1" ></div>
+    <div id = "defenseship2" ></div>
+    <div id = "defenseship3" ></div>
+    <div id = "defenseship4" ></div>
+    <div id = "defenseship5" ></div>
+    <div id = "attackship1" ></div>
+    <div id = "attackship2" ></div>
+    <div id = "attackship3" ></div>
+    <div id = "attackship4" ></div>
+    <div id = "attackship5" ></div>
+    <div id = "attackship6" ></div>
+    <div id = "attackship7" ></div>
+    <div id = "attackship8" ></div>
 
     <script>
         class ship {
-        constructor(type, points, hitPoints){
+        constructor(type, points, hitPoints, id){
         this.type = type;
         this.points = points;
         this.hitPoints = hitPoints;
+        this.id = id;
         this.isAlive = true;
     }
-        takesDamage(hit){
-            return this.points = this.points - hit;
+        takesDamage(){
+            this.points = this.points - this.hitPoints;
+            this.points >= 0 ? 0 : this.points;
+            return this.points;
         }
 
         dies(){
@@ -30,8 +46,8 @@
     }
 
     class Mothership extends ship{
-    constructor(type, Points, hitPoints){
-        super(type, Points, hitPoints);
+    constructor(type, points, hitPoints, id){
+        super(type, points, hitPoints, id);
         
     } 
     
@@ -39,24 +55,38 @@
         alert("game ends");
     }
 }
- 
-    const mothership = new Mothership ("mothership", 100 , 9);
-    const defenseship = new ship ("defenseship" , 80 , 10);
-    const attackship = new ship ("attackship" , 45 , 12);
 
-    const clearContent = document.getElementById("mothership").innerHTML = ('');
-    document.getElementById("mothership").innerHTML = clearContent + "Mothership " + mothership.points;
+    const mothership = new Mothership ("Mothership", 100 , 9, "mothership");
 
-    mothership.takesDamage(mothership.hitPoints);
+    const defenseship1 = new ship ("Defenseship" , 80 , 10 , "defenseship1");
+    const defenseship2 = new ship ("Defenseship" , 80 , 10 , "defenseship2");
+    const defenseship3 = new ship ("Defenseship" , 80 , 10 , "defenseship3");
+    const defenseship4 = new ship ("Defenseship" , 80 , 10 , "defenseship4");
+    const defenseship5 = new ship ("Defenseship" , 80 , 10 , "defenseship5");
 
-    document.getElementById("mothership").innerHTML = clearContent + "Mothership " + mothership.points;
-    // document.getElementById("mothership").innerHTML  + "Mothership " + mothership.points;
-        // document.getElementById("mothership").innerHTML = ("Mothership " + mothership);
+    const attackship1 = new ship ("Attackship" , 45 , 12, "attackship1");
+    const attackship2 = new ship ("Attackship" , 45 , 12, "attackship2");
+    const attackship3 = new ship ("Attackship" , 45 , 12, "attackship3");
+    const attackship4 = new ship ("Attackship" , 45 , 12, "attackship4");
+    const attackship5 = new ship ("Attackship" , 45 , 12, "attackship5");
+    const attackship6 = new ship ("Attackship" , 45 , 12, "attackship6");
+    const attackship7 = new ship ("Attackship" , 45 , 12, "attackship7");
+    const attackship8 = new ship ("Attackship" , 45 , 12, "attackship8");
 
+    const currentPoints = (shipType) => {
         
-        
+        document.getElementById(shipType.id).innerHTML = ('');
+        document.getElementById(shipType.id).innerHTML = shipType.type + (" ")+ shipType.points;
+    }
 
+    const reduce = (shipType) => {
+    shipType.takesDamage(shipType.hitPoints);   
+    }
 
+    currentPoints(mothership);
+    
+    // window.addEventListener('"click" ', reduce("mothership", "mothership " , mothership));
+    
     
     </script>
 </body>

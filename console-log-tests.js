@@ -5,9 +5,11 @@ class ship {
     this.hitPoints = hitPoints;
     this.isAlive = true;
 }
-    takesDamage(hit){
-        return this.points = this.points - hit;
-    }
+takesDamage(){
+    this.points = this.points - this.hitPoints;
+    this.points <= 0 ? 0 : this.points;
+    return this.points;
+}
 
     dies(){
         return this.isAlive = false;
@@ -16,8 +18,8 @@ class ship {
 }
 
 class Mothership extends ship{
-constructor(type, Points, hitPoints){
-    super(type, Points, hitPoints);
+constructor(type, points, hitPoints){
+    super(type, points, hitPoints);
     
 } 
 
@@ -30,13 +32,36 @@ const mothership = new Mothership ("mothership", 100 , 9);
 const defenseship = new ship ("defenseship" , 80 , 10);
 const attackship = new ship ("attackship" , 45 , 12);
 
+mothership.takesDamage()
+console.log(mothership.points);
 
-    // document.getElementById("mothership").innerHTML += mothership.points;
-    mothership.points = mothership.takesDamage(mothership.hitPoints);
-    console.log(mothership.points)
-    mothership.points = mothership.takesDamage(mothership.hitPoints);
-    console.log(mothership.points)
-    mothership.points = mothership.takesDamage(mothership.hitPoints);
-    console.log(mothership.points)
-    mothership.points = mothership.takesDamage(mothership.hitPoints);
-    console.log(mothership.points)
+mothership.takesDamage()
+console.log(mothership.points);
+mothership.takesDamage()
+console.log(mothership.points);
+mothership.takesDamage()
+console.log(mothership.points);
+
+mothership.takesDamage()
+console.log(mothership.points);
+mothership.takesDamage()
+console.log(mothership.points);
+mothership.takesDamage()
+console.log(mothership.points);
+
+mothership.takesDamage()
+console.log(mothership.points);
+mothership.takesDamage()
+console.log(mothership.points);
+mothership.takesDamage()
+console.log(mothership.points);
+mothership.takesDamage()
+console.log(mothership.points);
+mothership.takesDamage()
+console.log(mothership.points);
+mothership.takesDamage()
+console.log(mothership.points);
+mothership.takesDamage()
+console.log(mothership.points);
+mothership.takesDamage()
+console.log(mothership.points);

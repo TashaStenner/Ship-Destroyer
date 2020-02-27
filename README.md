@@ -8,6 +8,7 @@ set score in JS --- done
 reduce score by allocated amount in console -- done
 print score to page -- done
 make it replace score number -- done
+refactor -- done
 reduce score on click
 if score hits 0 stay at 0
 add more ships & set up same logic with the correct numbers
