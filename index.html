@@ -7,13 +7,20 @@
     <title>Ship Destroyer</title>
 </head>
 <body>
-    <div id = "mothership">Mothership</div>
+    <div id = "mothership">Mothership </div>
 
 
     <script>
         let mothership = 100; 
         let defenseship = 80;
         let attackship = 45;
+        let motherhit = 9;
+        let defensehit = 10;
+        let attackhit = 12;
+
+        const reduceScore = (shipType , hitpoints) =>  shipType - hitpoints;
+        document.getElementById("mothership").innerHTML += mothership;
+
     
     </script>
 </body>

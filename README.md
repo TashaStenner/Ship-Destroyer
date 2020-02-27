@@ -5,7 +5,7 @@ write psuedo code -- done
 set up html -- done
 create 1 space ship with text -- done
 set score in JS --- done
-reduce score by allocated amount in console
+reduce score by allocated amount in console -- done
 print score to page 
 if score hits 0 stay at 0
 add more ships & set up same logic with the correct numbers
