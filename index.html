@@ -11,20 +11,22 @@
 </head>
 
 <body>
-    <div id="mothership"></div>
-    <div id="defenseship1"></div>
-    <div id="defenseship2"></div>
-    <div id="defenseship3"></div>
-    <div id="defenseship4"></div>
-    <div id="defenseship5"></div>
-    <div id="attackship1"></div>
-    <div id="attackship2"></div>
-    <div id="attackship3"></div>
-    <div id="attackship4"></div>
-    <div id="attackship5"></div>
-    <div id="attackship6"></div>
-    <div id="attackship7"></div>
-    <div id="attackship8"></div>
+    <section id="ships">
+        <div id="mothership"></div>
+        <div id="defenseship1"></div>
+        <div id="defenseship2"></div>
+        <div id="defenseship3"></div>
+        <div id="defenseship4"></div>
+        <div id="defenseship5"></div>
+        <div id="attackship1"></div>
+        <div id="attackship2"></div>
+        <div id="attackship3"></div>
+        <div id="attackship4"></div>
+        <div id="attackship5"></div>
+        <div id="attackship6"></div>
+        <div id="attackship7"></div>
+        <div id="attackship8"></div>
+    </section>
     <button onClick = location.reload()>Retry</button>
 
     <script>
@@ -36,17 +38,17 @@
                 this.id = id;
                 this.isAlive = true;
             }
-            takesDamage() {
-                let dead = (this.points === "dead" && this.type === "Mothership") ? alert("game ends") : 
-                (this.points === "dead") ? this.dies() : 
-                this.points = this.points - this.hitPoints;
-                this.points = (this.points <= 0) ? "dead"  : 
-                this.points;
-            }
+                takesDamage() {
+                    let dead = (this.points === "dead" && this.type === "Mothership") ? alert("game ends") : 
+                    (this.points === "dead") ? this.dies() : 
+                    this.points = this.points - this.hitPoints;
+                    this.points = (this.points <= 0) ? "dead"  : 
+                    this.points;
+                }
 
-            dies() {
-                this.isAlive = false;
-            }
+                dies() {
+                    this.isAlive = false;
+                }
 
         }
 
@@ -70,24 +72,31 @@
         let ships = [mothership, defenseship1, defenseship2, defenseship3, defenseship4, defenseship5, attackship1, attackship2, attackship3, attackship4, attackship5, attackship6, attackship7, attackship8 ];
         
         const currentPoints = (ship) => {
-
             document.getElementById(ship.id).innerHTML = ('');
             document.getElementById(ship.id).innerHTML = ship.type + (" ") + ship.points;
         }
-
+        
         const reduce = () => {
             const shipPosition = Math.floor(Math.random() * ships.length)
             const ship = ships[shipPosition];
             ship.takesDamage();
             document.getElementById(ship.id).innerHTML = ('');
             document.getElementById(ship.id).innerHTML = ship.type + (" ") + ship.points;
+            // printHtml();
             ship.isAlive === false ? ships.splice(shipPosition, 1) : null;
         }
-    
+        
         document.addEventListener('click' , () => reduce());
-
+        
         ships.forEach(ship = (currentPoints));
-    </script>
+        
+        // const printHtml = () => {
+        //     document.getElementById('ships').innerHTML = "";
+        //     ships.forEach(ship => {
+        //         document.getElementById('ships').innerHTML += `<div>${ship.hp}</div>`
+        //     })
+        // }
+        </script>
 </body>
 
 </html>

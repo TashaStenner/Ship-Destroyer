@@ -18,10 +18,17 @@ randomise on each click -- done
 if mothership dies first end game -- done
 show alert when game ends -- done
 remove from array if dead - done
-create a reset button to restart game
+create a reset button to restart game -- done
+host site -- done
+MAX 150 LINES OF CODE!! ALL IN HTML -- done
 
-host site 
-MAX 150 LINES OF CODE!! ALL IN HTML
+// REFACTOR //
+
+use for loop to create the amount of invaders 
+throw them into empty array 
+update all aliens everytime a score has been changed
+when mothership dies print dead on all other ships
+style 
 
 //brief//
 
