@@ -12,30 +12,25 @@
 
 <body>
     <section id="ships">
-        <div id="mothership"></div>
-        <div id="defenseship1"></div>
-        <div id="defenseship2"></div>
-        <div id="defenseship3"></div>
-        <div id="defenseship4"></div>
-        <div id="defenseship5"></div>
-        <div id="attackship1"></div>
-        <div id="attackship2"></div>
-        <div id="attackship3"></div>
-        <div id="attackship4"></div>
-        <div id="attackship5"></div>
-        <div id="attackship6"></div>
-        <div id="attackship7"></div>
-        <div id="attackship8"></div>
+        
     </section>
-    <button onClick = location.reload()>Retry</button>
-
+    <button onclick = start() >Retry</button>
+    <button onclick = reduce() >Fire</button>
+    
     <script>
+        const motherships = 1;
+        const defenseships = 5;
+        const attackships = 8; 
+        const totalShips = motherships + defenseships + attackships;
+        
+        let ships = [];
+        const shipElement = document.getElementById("ships");
+
         class Ship {
-            constructor(type, points, hitPoints, id) {
+            constructor(type, points, hitPoints) {
                 this.type = type;
                 this.points = points;
                 this.hitPoints = hitPoints;
-                this.id = id;
                 this.isAlive = true;
             }
                 takesDamage() {
@@ -48,54 +43,46 @@
 
                 dies() {
                     this.isAlive = false;
+                    this.type === "mothership"
                 }
 
         }
-
-        const mothership = new Ship("Mothership", 100, 9, "mothership");
-
-        const defenseship1 = new Ship("Defenseship", 80, 10, "defenseship1");
-        const defenseship2 = new Ship("Defenseship", 80, 10, "defenseship2");
-        const defenseship3 = new Ship("Defenseship", 80, 10, "defenseship3");
-        const defenseship4 = new Ship("Defenseship", 80, 10, "defenseship4");
-        const defenseship5 = new Ship("Defenseship", 80, 10, "defenseship5");
-
-        const attackship1 = new Ship("Attackship", 45, 12, "attackship1");
-        const attackship2 = new Ship("Attackship", 45, 12, "attackship2");
-        const attackship3 = new Ship("Attackship", 45, 12, "attackship3");
-        const attackship4 = new Ship("Attackship", 45, 12, "attackship4");
-        const attackship5 = new Ship("Attackship", 45, 12, "attackship5");
-        const attackship6 = new Ship("Attackship", 45, 12, "attackship6");
-        const attackship7 = new Ship("Attackship", 45, 12, "attackship7");
-        const attackship8 = new Ship("Attackship", 45, 12, "attackship8");
-
-        let ships = [mothership, defenseship1, defenseship2, defenseship3, defenseship4, defenseship5, attackship1, attackship2, attackship3, attackship4, attackship5, attackship6, attackship7, attackship8 ];
+  
+        const start = () => {
         
-        const currentPoints = (ship) => {
-            document.getElementById(ship.id).innerHTML = ('');
-            document.getElementById(ship.id).innerHTML = ship.type + (" ") + ship.points;
+            ships = [];
+            shipElement.innerHTML = '';
+            console.log(shipElement)
+
+            for (let index = 0; index < totalShips; index++){
+                let newShip;
+                index < motherships ? newShip = new Ship("Mothership", 100, 9) :
+                index <= defenseships ? newShip = new Ship("Defenseship", 80, 10) :
+                newShip = new Ship("Attackship", 45, 12);
+
+                ships.push(newShip);
+            }
+            currentPoints() 
         }
+
+        const currentPoints = () => {
+            shipElement.innerHTML = '';
+
+            ships.forEach(ship => {
+                shipElement.innerHTML += `<p>${ship.type} : ${ship.points}</p>` ;
+            })
+        
+        }     
         
         const reduce = () => {
             const shipPosition = Math.floor(Math.random() * ships.length)
             const ship = ships[shipPosition];
             ship.takesDamage();
-            document.getElementById(ship.id).innerHTML = ('');
-            document.getElementById(ship.id).innerHTML = ship.type + (" ") + ship.points;
-            // printHtml();
+            currentPoints(); 
             ship.isAlive === false ? ships.splice(shipPosition, 1) : null;
         }
-        
-        document.addEventListener('click' , () => reduce());
-        
-        ships.forEach(ship = (currentPoints));
-        
-        // const printHtml = () => {
-        //     document.getElementById('ships').innerHTML = "";
-        //     ships.forEach(ship => {
-        //         document.getElementById('ships').innerHTML += `<div>${ship.hp}</div>`
-        //     })
-        // }
+        start()
+        currentPoints();
         </script>
 </body>
 
