@@ -1,86 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <script src="console-log-tests.js"></script>
     <title>Ship Destroyer</title>
+  </head>
 
-</head>
+  <body>
+    <section id="ships"></section>
 
-<body>
-    <section id="ships">
-    </section>
+    <button onclick="start()">Retry</button>
+    <button onclick="reduce()">Fire</button>
 
-    <button onclick = start() >Retry</button>
-    <button onclick = reduce() >Fire</button>
-    
     <script>
-        const motherships = 1;
-        const defenseships = 5;
-        const attackships = 8; 
-        const totalShips = motherships + defenseships + attackships;
-        
-        let ships = [];
-        const shipElement = document.getElementById("ships");
+      const motherships = 1;
+      const defenseships = 5;
+      const attackships = 8;
+      const totalShips = motherships + defenseships + attackships;
 
-        class Ship {
-            constructor(type, points, hitPoints) {
-                this.type = type;
-                this.points = points;
-                this.hitPoints = hitPoints;
-                this.isAlive = true;
-            }
-                takesDamage() {
-                    let dead = (this.points === "dead" && this.type === "Mothership") ? alert("game ends") : 
-                    (this.points === "dead") ? this.dies() : 
-                    this.points = this.points - this.hitPoints;
-                    this.points = (this.points < 1) ? "dead"  : 
-                    this.points;
-                }
-                    dies() {
-                        this.isAlive = false;
-                    }
+      let ships = [];
+      const shipElement = document.getElementById("ships");
+
+      class Ship {
+        constructor(type, points, hitPoints) {
+          this.type = type;
+          this.points = points;
+          this.hitPoints = hitPoints;
+          this.isAlive = true;
         }
-  
-        const start = () => {
-            ships = [];
-            shipElement.innerHTML = '';
-       
-            for (let index = 0; index < totalShips; index++){
-                let newShip;
-                index < motherships ? newShip = new Ship("Mothership", 100, 9) :
-                index <= defenseships ? newShip = new Ship("Defenseship", 80, 10) :
-                newShip = new Ship("Attackship", 45, 12);
-
-                ships.push(newShip);
-            }
-            currentPoints() 
+        takesDamage() {
+          let dead =
+            this.points === "dead" && this.type === "Mothership"
+              ? alert("game ends")
+              : this.points === "dead"
+              ? this.dies()
+              : (this.points = this.points - this.hitPoints);
+          this.points = this.points < 1 ? "dead" : this.points;
         }
-
-        const currentPoints = () => {
-            shipElement.innerHTML = '';
-
-            ships.forEach(ship => {
-                shipElement.innerHTML += `<p>${ship.type} : ${ship.points}</p>` ;
-            })
-        
-        }     
-        
-        const reduce = () => {
-            const shipPosition = Math.floor(Math.random() * ships.length)
-            const ship = ships[shipPosition];
-            ship.takesDamage();
-            currentPoints(); 
-            ship.points === "dead" ? ships.splice(shipPosition, 1) : null;
-            ship.type === "Mothership" && ship.isAlive === false ? ships = [] : null;
+        dies() {
+          this.isAlive = false;
         }
+      }
 
-        start()
+      const start = () => {
+        ships = [];
+        shipElement.innerHTML = "";
+
+        for (let index = 0; index < totalShips; index++) {
+          let newShip;
+          index < motherships
+            ? (newShip = new Ship("Mothership", 100, 9))
+            : index <= defenseships
+            ? (newShip = new Ship("Defenseship", 80, 10))
+            : (newShip = new Ship("Attackship", 45, 12));
+
+          ships.push(newShip);
+        }
         currentPoints();
-        </script>
-</body>
+      };
 
+      const currentPoints = () => {
+        shipElement.innerHTML = "";
+
+        ships.forEach(ship => {
+          shipElement.innerHTML += `<p>${ship.type} : ${ship.points}</p>`;
+        });
+      };
+
+      const reduce = () => {
+        const shipPosition = Math.floor(Math.random() * ships.length);
+        const ship = ships[shipPosition];
+        ship.takesDamage();
+        currentPoints();
+        ship.points === "dead" ? ships.splice(shipPosition, 1) : null;
+        ship.type === "Mothership" && ship.isAlive === false
+          ? (ships = [])
+          : null;
+      };
+
+      start();
+      currentPoints();
+    </script>
+  </body>
 </html>
