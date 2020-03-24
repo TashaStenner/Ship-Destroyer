@@ -1,3 +1,6 @@
+This has not been styled as it is completed to brief in as little code as possible within a set time frame. 
+Was used to demonstrate being able to use arrays and array iterators. It is not perfect but was completed during our first few weeks on the course. If i was going to refactor I would fix the bug i currently have with scores and style it to make it look more presentable. 
+
 # ship-destroyer
 
 make git repo -- done
@@ -21,19 +24,6 @@ remove from array if dead - done
 create a reset button to restart game -- done
 host site -- done
 MAX 150 LINES OF CODE!! ALL IN HTML -- done
-
-// REFACTOR //
-
-use for loop to create the amount of invaders 
-loop needs to: 
-create html
-create iteration 
-throw them into empty array 
-update all aliens everytime a score has been changed
-when mothership dies print dead on all other ships
-style 
-
-USE NOTEBOOK!!! (BROWN)
 
 //brief//
 
