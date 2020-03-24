@@ -12,8 +12,8 @@
 
 <body>
     <section id="ships">
-        
     </section>
+
     <button onclick = start() >Retry</button>
     <button onclick = reduce() >Fire</button>
     
@@ -37,23 +37,18 @@
                     let dead = (this.points === "dead" && this.type === "Mothership") ? alert("game ends") : 
                     (this.points === "dead") ? this.dies() : 
                     this.points = this.points - this.hitPoints;
-                    this.points = (this.points <= 0) ? "dead"  : 
+                    this.points = (this.points < 1) ? "dead"  : 
                     this.points;
                 }
-
-                dies() {
-                    this.isAlive = false;
-                    this.type === "mothership"
-                }
-
+                    dies() {
+                        this.isAlive = false;
+                    }
         }
   
         const start = () => {
-        
             ships = [];
             shipElement.innerHTML = '';
-            console.log(shipElement)
-
+       
             for (let index = 0; index < totalShips; index++){
                 let newShip;
                 index < motherships ? newShip = new Ship("Mothership", 100, 9) :
@@ -79,8 +74,10 @@
             const ship = ships[shipPosition];
             ship.takesDamage();
             currentPoints(); 
-            ship.isAlive === false ? ships.splice(shipPosition, 1) : null;
+            ship.points === "dead" ? ships.splice(shipPosition, 1) : null;
+            ship.type === "Mothership" && ship.isAlive === false ? ships = [] : null;
         }
+
         start()
         currentPoints();
         </script>

@@ -24,11 +24,11 @@ MAX 150 LINES OF CODE!! ALL IN HTML -- done
 
 // REFACTOR //
 
-use for loop to create the amount of invaders 
+use for loop to create the amount of invaders -- done
 loop needs to: 
-create html
-create iteration 
-throw them into empty array 
+create html -- done
+create iteration -- done
+throw them into empty array -- done
 update all aliens everytime a score has been changed
 when mothership dies print dead on all other ships
 style 
